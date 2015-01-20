@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+/* 
+	marrom: #e17125
+	roxo: #8b5088 
+	verde: #aad15c
+*/
+
+a:link, a:visited, a:hover {color: #aad15c;}
+
+h1{color:#aad15c;}
+
+.img70{float:left;}
+
+.nav {overflow: hidden;background-color: #aad15c;-moz-box-shadow: 0 0 3px 1px #aaaaaa;-webkit-box-shadow: 0 0 3px 1px #aaaaaa;box-shadow: 0 0 3px 1px #aaaaaa;}
+
+.nav a {color: #ffffff;}
+
+.nav a:active, .nav a:visited {color: #ffffff;}
+
+.nav a:focus, .nav a:hover {background-color: #8b5088;color: #ffffff;}
+
+.nav ul{padding: 20px;}
+
+.nav li{margin-right:1.5em;}
+
+.no-borderradius .nav a:focus, .no-borderradius .nav a:hover {background-color: transparent;color: #444444;}
+
+.gallery .item {background: none;}
+
+.footer {background: #aad15c;}
+
+
