@@ -140,9 +140,12 @@ class ImageController {
             return
         }
 
-        if(imageInstance.delete(flush:true)){
+        try{
+			imageInstance.delete(flush:true, failOnError: true)
 			imageService.clearCache(imageInstance)
-		}
+		}catch(Exception e){
+			e.printStackTrace()
+		}		
 
         request.withFormat {
             form multipartForm {
