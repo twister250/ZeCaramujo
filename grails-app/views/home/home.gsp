@@ -24,7 +24,7 @@
 			<g:each in="${images}" status="i" var="imageInstance">
 				<div id="item-${i}" class="control-operator"></div>
 				<figure class="item">
-					<img src="${createLink(controller: 'image', action:'displayImage', id: imageInstance.id, params: [type: 'image'])}"/>
+					<img src="${createLink(controller: 'image', action:'displayImage', id: imageInstance.id, params: [type: 'custom'])}"/>
 				</figure>
 			</g:each>
 			<div class="controls">

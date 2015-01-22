@@ -4,6 +4,7 @@ import grails.transaction.Transactional
 import grails.util.Holders;
 import java.awt.image.BufferedImage
 import javax.imageio.ImageIO;
+import org.imgscalr.Scalr;
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
@@ -26,15 +27,18 @@ class ImageController {
 	 */
 	def displayImage(Image imageInstance){
 		File imageFile
-		def fileName		
+		def fileName = imageInstance.id
+		def extension = "."+imageInstance.extension
 		def path = imageService.path
-		if(params.type.equals("thumb")){
-			fileName = imageInstance.id + "_thumb" + imageInstance.originalFilename.substring(imageInstance.originalFilename.indexOf("."))
-			imageFile = new File(path["thumbPath"],fileName)
+		if(params.type.equals("thumb")){			
+			imageFile = new File(path["thumbPath"],fileName+"_thumb"+extension)
 		}else{
-			fileName = imageInstance.id + imageInstance.originalFilename.substring(imageInstance.originalFilename.indexOf("."))
-			imageFile = new File(path["imagePath"],fileName)
-		}		
+			if(params.type.equals("image")){
+				imageFile = new File(path["imagePath"],fileName+extension)
+			}else{
+				imageFile = imageService.loadCustomImage(imageInstance)
+			}
+		}
 		render file: imageFile, contentType: imageInstance.extension
 	}
 	
