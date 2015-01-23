@@ -31,12 +31,12 @@ class ImageController {
 		def extension = "."+imageInstance.extension
 		def path = imageService.path
 		if(params.type.equals("thumb")){			
-			imageFile = new File(path["thumbPath"],fileName+"_thumb"+extension)
+			imageFile = new File(path["thumbPath"],fileName+extension)
 		}else{
 			if(params.type.equals("image")){
 				imageFile = new File(path["imagePath"],fileName+extension)
 			}else{
-				imageFile = imageService.loadCustomImage(imageInstance)
+				imageFile = new File(path["customPath"],fileName+extension)
 			}
 		}
 		render file: imageFile, contentType: imageInstance.extension
